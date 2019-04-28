@@ -1,2 +1,2 @@
-# rock_n_walk_bot
-Telegram bot for Rock-n-Walk.ru
+# Telegram bot for [Rock-n-Walk](Rock-n-Walk.ru)
+
