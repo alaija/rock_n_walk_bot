@@ -3,7 +3,7 @@ package tg
 import (
 	"log"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // NewRNWBot makes and acivates r-n-w bot
