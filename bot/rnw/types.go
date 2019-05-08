@@ -43,3 +43,15 @@ func (d *Driver) setPassanger(passanger string) {
 		})
 	}
 }
+
+func isDriver(driver string) bool {
+	return strings.Count(driver, ":") == 1
+}
+
+func isPassanger(passanger string) bool {
+	return strings.Count(passanger, "@") > 0
+}
+
+func isGroup(passanger string) bool {
+	return strings.Count(passanger, "@") > 1 && strings.Count(passanger, "-") > 0
+}

@@ -5,9 +5,6 @@ jobs:
       - image: golang:latest
     working_directory: /go/src/alaija/rock_n_walk_bot
 
-    environment: # environment variables for the build itself
-      TEST_RESULTS: /tmp/test-results # path to where test results will be saved
-
     steps: # steps that comprise the `build` job
       - checkout # check out source code to working directory
 
