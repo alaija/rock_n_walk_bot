@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build: 
+    docker:
+      - image: golang:latest
+    working_directory: /go/src/alaija/rock_n_walk_bot
+
+    environment: # environment variables for the build itself
+      TEST_RESULTS: /tmp/test-results # path to where test results will be saved
+
+    steps: # steps that comprise the `build` job
+      - checkout # check out source code to working directory
+
+      - run: go get -d -v ./...
+      - run: go install -v ./...

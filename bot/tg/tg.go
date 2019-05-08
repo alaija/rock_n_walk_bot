@@ -3,7 +3,7 @@ package tg
 import (
 	"log"
 
-	"github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // NewRNWBot makes and acivates r-n-w bot
@@ -27,18 +27,16 @@ func RunRNWBot(token string, dbg bool) {
 	}
 
 	for update := range updates {
-		if update.Message == nil {
-			continue
-		}
-
-		log.Printf("[DEBUG] %s: %s", update.Message.From.UserName, update.Message.Text)
-
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
-		msg.ReplyToMessageID = update.Message.MessageID
-
-		_, err = bot.Send(msg)
-		if err != nil {
-			log.Printf("[DEBUG] Cannot send msg with: %s", err)
+		if update.InlineQuery != nil {
+			inlineConfig, err := Process(update)
+			if err != nil {
+				log.Printf("[DEBUG] Error process update: %s", err)
+				continue
+			}
+			_, err = bot.AnswerInlineQuery(*inlineConfig)
+			if err != nil {
+				log.Printf("[DEBUG] Cannot send msg with: %s", err)
+			}
 		}
 	}
 }
