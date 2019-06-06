@@ -87,8 +87,10 @@ func seatPassanger(ds *[]*Driver, p Passanger) {
 		}
 	}
 
-	rand.Seed(time.Now().Unix())
-	dsf[rand.Intn(len(dsf))].setPassanger(p.Name)
+	if len(dsf) > 0 {
+		rand.Seed(time.Now().Unix())
+		dsf[rand.Intn(len(dsf))].setPassanger(p.Name)
+	}
 }
 
 func popRandomPassanger(ps []Passanger) ([]Passanger, *Passanger) {

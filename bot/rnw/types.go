@@ -49,7 +49,7 @@ func isDriver(driver string) bool {
 }
 
 func isPassanger(passanger string) bool {
-	return strings.Count(passanger, "@") > 0
+	return len(passanger) > 1 && strings.Count(passanger, "@")-strings.Count(passanger, "-") == 1
 }
 
 func isGroup(passanger string) bool {
